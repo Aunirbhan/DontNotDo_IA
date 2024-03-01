@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -10,13 +10,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="main.css" />
-    <script defer src="script.js"></script>
-    <script type="module" src="firebase.js"></script>
-  </head>
+    <script src="script.js" type="module"></script>
+    <!-- <script src="firebase.js" type="module"></script> -->
+</head>
 
-  <body>
+<body>
     <h1 class="title">Don't Not Do It List</h1>
-
+<!-- <div class="main-container"> -->
     <div class="all-tasks">
       <h2 class="task-list-title">Courses</h2>
       <ul class="task-list" data-lists></ul>
@@ -62,8 +62,6 @@
       </div>
     </div>
 
-   
-    </div>
     <template id="task-template">
       <div class="task">
         <input type="checkbox" />
@@ -72,6 +70,15 @@
         </label>
       </div>
     </template>
-    <script type="module" src="firebase.js"></script>
-  </body>
+
+    <!-- <div class="buttons-container"> -->
+      <div class="logout-container" style="text-align: center; margin-top: 20px;">
+          <!-- <button id="logout-button" class="btn delete">Log Out</button>-->
+          <div class="user-welcome"></div>
+          <button class="button-54" id="logout-button" onclick="handleSignOut()">Log Out</button>
+      </div>
+    <!-- </div> -->
+<!-- </div> -->
+    <script src="firebase.js" type="module"></script>
+</body>
 </html>
