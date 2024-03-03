@@ -1,84 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Todo list</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="main.css" />
-    <script src="script.js" type="module"></script>
-    <!-- <script src="firebase.js" type="module"></script> -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Todo list</title>
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css" />
+  <script src="https://kit.fontawesome.com/6f3103b13c.js" crossorigin="anonymous"></script>
+  <script src="script.js" type="module"></script>
+
 </head>
 
 <body>
-    <h1 class="title">Don't Not Do It List</h1>
-<!-- <div class="main-container"> -->
-    <div class="all-tasks">
-      <h2 class="task-list-title">Courses</h2>
-      <ul class="task-list" data-lists></ul>
+  <h1 class="title">Don't Not Do It List</h1>
+  <div class="main-container">
+    <div class="todo-container">
+      <div class="all-tasks">
+        <h2 class="task-list-title">Courses</h2>
+        <ul class="task-list" data-lists></ul>
 
-      <form action="" data-new-list-form>
-        <input 
-          type="text"
-          class="new list"
-          data-new-list-input
-          placeholder="new list name"
-          aria-label="new list name"
-        />
-        <button class="btn create" aria-label="create new list">+</button>
-      </form>
-    </div>
-
-    <div class="todo-list" data-list-display-container>
-      <div class="todo-header">
-        <h2 class="list-title" data-list-title></h2>
-        <p class="task-count" data-list-count> tasks remaining</p>
+        <form action="" data-new-list-form>
+          <input type="text" class="new list" data-new-list-input placeholder="new list name"
+            aria-label="new list name" />
+          <button class="btn create" aria-label="create new list">+</button>
+        </form>
       </div>
 
-      <div class="todo-body">
-        <div class="tasks" data-tasks></div>
+      <div class="todo-list" data-list-display-container>
+        <div class="todo-header">
+          <h2 class="list-title" data-list-title></h2>
+          <p class="task-count" data-list-count> tasks remaining</p>
+        </div>
 
-        <div class="new-task-creator">
+        <div class="todo-body">
+          <div class="tasks" data-tasks></div>
+
+          <div class="new-task-creator">
             <form action="" data-new-task-form>
-                <input 
-                  type="text"
-                  data-new-task-input
-                  class="new task"
-                  placeholder="new task name"
-                  aria-label="new task name"
-                />
-                <button class="btn create" aria-label="create new task">+</button>
-              </form>
-        </div>
+              <input type="text" data-new-task-input class="new task" placeholder="new task name"
+                aria-label="new task name" />
+              <button class="btn create" aria-label="create new task">+</button>
+            </form>
+          </div>
 
-        <div class="delete-stuff">
-          <button class="btn delete" data-clear-complete-tasks-button>Clear completed tasks</button>
-          <button class="btn delete" data-delete-list-button>Delete list</button>
+          <div class="delete-stuff">
+            <button class="btn delete" data-clear-complete-tasks-button>Clear completed tasks</button>
+            <button class="btn delete" data-delete-list-button>Delete list</button>
+          </div>
         </div>
       </div>
+
+      <template id="task-template">
+        <div class="task">
+          <input type="checkbox" />
+          <label>
+            <span class="custom-checkbox"></span>
+          </label>
+        </div>
+      </template>
     </div>
 
-    <template id="task-template">
-      <div class="task">
-        <input type="checkbox" />
-        <label>
-          <span class="custom-checkbox"></span>
-        </label>
+    <div class="buttons-container">
+      <div class="logout-container" style="text-align: center; margin-top: 2%;">
+        <!-- <button id="logout-button" class="btn delete">Log Out</button>-->
+        <div class="user-welcome"></div>
+        <button class="button-54" id="logout-button" onclick="handleSignOut()">Log Out</button>
       </div>
-    </template>
 
-    <!-- <div class="buttons-container"> -->
-      <div class="logout-container" style="text-align: center; margin-top: 20px;">
-          <!-- <button id="logout-button" class="btn delete">Log Out</button>-->
-          <div class="user-welcome"></div>
-          <button class="button-54" id="logout-button" onclick="handleSignOut()">Log Out</button>
+      <div class="pomodoro-container" style="text-align: center; margin-top: 2%;">
+        <button class="button-54" data-modal-target="#modal">Pomodoro Timer</button>
+        <div class="modal" id="modal">
+          <div class="modal-header">
+            <div class="modal-title" style="color: rgb(37, 37, 110);">Pomodoro Timer</div>
+            <button data-close-button class="close-button">&times;</button>
+          </div>
+          <div class="modal-body" style="color: rgb(37, 37, 110);">
+            <div class="painel">
+              <p id="work">work</p>
+              <p id="break">break</p>
+            </div>
+
+            <div class="timer">
+              <div class="circle">
+                <div class="time">
+                  <p id="minutes"></p>
+                  <p>:</p>
+                  <p id="seconds"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls">
+              <button id="start""><i class="fa-solid fa-play"></i></button>
+
+              <a id="reset" href="./"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+            </div>
+          </div>
+        </div>
+        <div id="overlay"></div>
       </div>
-    <!-- </div> -->
-<!-- </div> -->
-    <script src="firebase.js" type="module"></script>
+    </div>
+  </div>
+  <script src="firebase.js" type="module"></script>
+  <script src="pomodoro.js" type="module"></script>
 </body>
+
 </html>
