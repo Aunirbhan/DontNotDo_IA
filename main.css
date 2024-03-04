@@ -471,3 +471,44 @@ form {
 .controls #reset {
   display: none;
 }
+
+/* Responsive Design for iPhone 14 Pro Max*/
+
+@media (max-width: 430px) {
+  body {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  .main-container, .modal, .painel, .timer {
+    width: 90%; 
+    margin-left: 5%; 
+    margin-right: 5%; 
+  }
+
+  .todo-container, .buttons-container {
+    width: 100%; 
+  }
+
+  .title {
+    font-size: calc(5vw + 1rem); /* Adjust title size to be responsive */
+  }
+
+  .modal {
+    width: 90%; 
+    max-width: none;
+  }
+
+  .painel, .timer {
+    width: 90%; 
+    margin-left: 5%; 
+    margin-right: 5%; 
+  }
+
+  .task-list, .new.task, .todo-list, .todo-header, .todo-body {
+    margin-left: 5%; 
+    margin-right: 5%; 
+  }
+  .buttons-container{
+    padding-top: 20px;
+  }
+}
