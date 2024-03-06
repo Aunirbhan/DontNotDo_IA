@@ -1,7 +1,7 @@
 // variables
 
-let workTittle = document.getElementById('work');
-let breakTittle = document.getElementById('break');
+let workTitle = document.getElementById('work');
+let breakTitle = document.getElementById('break');
 let start = document.getElementById('start');
 
 let workTime = 25;
@@ -15,7 +15,7 @@ window.onload = () => {
     document.getElementById('minutes').innerHTML = workTime;
     document.getElementById('seconds').innerHTML = seconds;
 
-    workTittle.classList.add('active');
+    workTitle.classList.add('active');
 }
 
 // start timer
@@ -51,16 +51,16 @@ start.addEventListener('click', () => {
                     breakCount++
 
                     // change the painel
-                    workTittle.classList.remove('active');
-                    breakTittle.classList.add('active');
+                    workTitle.classList.remove('active');
+                    breakTitle.classList.add('active');
                 }else {
                     // continue work
                     workMinutes = workTime;
                     breakCount++
 
                     // change the painel
-                    breakTittle.classList.remove('active');
-                    workTittle.classList.add('active');
+                    breakTitle.classList.remove('active');
+                    workTitle.classList.add('active');
                 }
             }
             seconds = 59;
