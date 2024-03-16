@@ -1,6 +1,7 @@
 // Import Firebase modules
 import { initializeApp } from 'https://cdn.skypack.dev/@firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut } from 'https://cdn.skypack.dev/@firebase/auth';
+import { getDatabase, ref, set, get, child, update, remove } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js';
 
 // Firebase configuration
 const firebaseConfig = {
