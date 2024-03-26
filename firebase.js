@@ -1,7 +1,9 @@
 // Import Firebase modules
 import { initializeApp } from 'https://cdn.skypack.dev/@firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut } from 'https://cdn.skypack.dev/@firebase/auth';
-import { getDatabase, ref, set, get, child, update, remove } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js';
+
+
+const welcomeStatement = document.getElementById("welcome")
 
 // Firebase configuration
 const firebaseConfig = {
@@ -16,6 +18,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Authentication 
 const auth = getAuth(app);
 
 // Function to handle Google sign-in
@@ -37,7 +41,8 @@ function handleSignOut() {
 // Handling the auth state change
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        console.log("User is signed in:", user.displayName);
+        console.log("User is signed in:", user);
+        welcomeStatement.innerHTML=`Welcome ${user.displayName}!`
         document.getElementsByClassName(user-welcome)
         // Optionally redirect to index.html if you're not there already
         if (window.location.pathname !== '/index.html') {
@@ -56,19 +61,29 @@ onAuthStateChanged(auth, (user) => {
 function processGoogleSignInResult() {
     getRedirectResult(auth)
         .then((result) => {
-            if (result.user) {
+            // Check if result exists and result has a user
+            if (result && result.user) {
                 console.log("Sign-in successful, user:", result.user.displayName);
+                // Redirect user to the homepage or dashboard
                 window.location.href = "index.html";
+            } else {
+                // Handle cases where there's no sign-in result
+                console.log("No sign-in redirect result found.");
             }
         })
         .catch((error) => {
+            // Handle errors that occurred during the sign-in redirect process
             console.error("Error during Google Sign-In redirect result processing:", error);
         });
 }
 
-// Call processGoogleSignInResult to handle any sign-in redirect
-processGoogleSignInResult();
+// Ensuring this function is called when the page and Firebase are fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    processGoogleSignInResult();
+});
 
+                         
+             
 // Expose the sign-in and sign-out functions to be called from HTML
 window.handleGoogleSignIn = handleGoogleSignIn;
 window.handleSignOut = handleSignOut;

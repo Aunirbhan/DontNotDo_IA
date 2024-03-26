@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/6f3103b13c.js" crossorigin="anonymous"></script>
   <script src="script.js" type="module"></script>
   <script src="modal.js" type="module"></script>
@@ -18,9 +18,20 @@
 </head>
 
 <body>
+  <!-- Navigation Bar for the page -->
+  <header>
+    <nav>
+      <ul class="nav_links">
+        <li><a href="index.html">Home Page</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <h1 class="title">Don't Not Do It List</h1>
   <div class="main-container">
     <div class="todo-container">
+      <p id="welcome"></p>
       <div class="all-tasks">
         <h2 class="task-list-title">Courses</h2>
         <ul class="task-list" data-lists></ul>
@@ -43,7 +54,7 @@
 
           <div class="new-task-creator">
             <form action="" data-new-task-form>
-              <input type="text" data-new-task-input class="new task" placeholder="new task name"
+              <input type="text" data-new-task-input class="new task" placeholder="Enter your task"
                 aria-label="new task name" />
               <button class="btn create" aria-label="create new task">+</button>
             </form>
@@ -91,7 +102,7 @@
             </div>
 
             <div class="controls">
-              <button id="start""><i class="fa-solid fa-play"></i></button>
+              <button id="start""><i class=" fa-solid fa-play"></i></button>
 
               <a id="reset" href="./"><i class="fa-solid fa-arrow-rotate-left"></i></a>
             </div>
@@ -100,7 +111,6 @@
         <div id="overlay"></div>
       </div>
       <div class="logout-container" style="text-align: center; margin-top: 2%;">
-        <!-- <button id="logout-button" class="btn delete">Log Out</button>-->
         <div class="user-welcome"></div>
         <button class="button-54" id="logout-button" onclick="handleSignOut()">Log Out</button>
       </div>
