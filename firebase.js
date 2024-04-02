@@ -38,7 +38,7 @@ function handleSignOut() {
     });
 }
 
-// Handling the auth state change
+// Handling the auth state change to provide access to the project which is located at index.html
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User is signed in:", user);
